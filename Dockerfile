@@ -1,4 +1,4 @@
-FROM golang:1.23.2 as builder
+FROM golang:1.23.2 AS builder
 
 ENV GOPROXY="https://proxy.golang.com.cn,direct"
 

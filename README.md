@@ -12,7 +12,7 @@ docker build -t hub.github.com/atompi/metrics-post-station:v1.0.0 .
 
 ```
 mkdir -p logs
-# edit conf/metrics-post-station.yaml
+# edit metrics-post-station.yaml
 docker-compose up -d
 ```
 

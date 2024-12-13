@@ -1,0 +1,16 @@
+---
+
+name: 'metrics-post-station'
+
+services:
+  metrics-post-station:
+    image: atompi/metrics-post-station:v1.0.0
+    restart: unless-stopped
+    volumes:
+      - ./conf/metrics-post-station.yaml:/app/metrics-post-station.yaml
+      - ./logs:/app/logs
+
+networks:
+  default:
+    external: true
+    name: compose

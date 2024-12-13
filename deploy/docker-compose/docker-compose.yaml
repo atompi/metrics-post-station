@@ -7,8 +7,10 @@ services:
     image: atompi/metrics-post-station:v1.0.0
     restart: unless-stopped
     volumes:
-      - ./conf/metrics-post-station.yaml:/app/metrics-post-station.yaml
+      - ./metrics-post-station.yaml:/app/metrics-post-station.yaml
       - ./logs:/app/logs
+    ports:
+      - "9091:9091"
 
 networks:
   default:

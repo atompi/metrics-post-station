@@ -11,7 +11,7 @@ apiserver:
   listen: :9091
   prefix: /
   redis:
-    addr: 127.0.0.1:6379
+    addr: 192.168.221.130:6379
     password: 123456
     db: 0
     dialtimeout: 5

@@ -5,7 +5,7 @@ Metrics Post Station(MPS) is a middleware tool, storing and retrieving metrics d
 ## Build
 
 ```
-docker build -t hub.github.com/atompi/metrics-post-station:v1.0.0 .
+docker build -t atompi/metrics-post-station:v1.0.0 .
 ```
 
 ## Deploy

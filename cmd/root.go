@@ -40,6 +40,7 @@ var rootCmd = &cobra.Command{
 metrics data can be achieved through HTTP requests. Specifically, you can use
 POST requests to receive metrics data and GET requests to return stored
 metrics data.`,
+	Version: options.Version,
 	// Uncomment the following line if your bare application
 	// has an action associated with it:
 	Run: func(cmd *cobra.Command, args []string) {

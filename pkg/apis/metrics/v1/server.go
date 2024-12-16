@@ -14,9 +14,9 @@ func Get(c *redis.Client, key string, timeout int) (res string, err error) {
 	return
 }
 
-func Set(c *redis.Client, key string, value string, timeout int) error {
+func Set(c *redis.Client, key string, value string, timeout int, expiration int) error {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Duration(timeout)*time.Second)
-	err := c.Set(ctx, key, value, 60*time.Second).Err()
+	err := c.Set(ctx, key, value, time.Duration(expiration)*time.Second).Err()
 	cancel()
 	return err
 }

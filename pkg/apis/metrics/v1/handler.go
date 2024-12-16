@@ -21,7 +21,7 @@ func GetHandler(c *handler.Context) {
 		c.GinContext.JSON(http.StatusOK, gin.H{"response": "bad request, param module or target not found"})
 		return
 	}
-	key := m + "__" + t
+	key := opts.APIServer.Redis.Prefix + m + "__" + t
 
 	res, err := Get(rdb, key, opts.APIServer.Redis.DialTimeout)
 	if err != nil {
@@ -39,7 +39,7 @@ func SetHandler(c *handler.Context) {
 
 	job := c.GinContext.Param("job")
 	instance := c.GinContext.Param("instance")
-	key := job + "__" + instance
+	key := opts.APIServer.Redis.Prefix + job + "__" + instance
 
 	bodyBytes, err := io.ReadAll(c.GinContext.Request.Body)
 	if err != nil {
@@ -48,7 +48,7 @@ func SetHandler(c *handler.Context) {
 	}
 	value := string(bodyBytes)
 
-	err = Set(rdb, key, value, opts.APIServer.Redis.DialTimeout)
+	err = Set(rdb, key, value, opts.APIServer.Redis.DialTimeout, opts.APIServer.Redis.Expiration)
 	if err != nil {
 		c.GinContext.JSON(http.StatusInternalServerError, gin.H{"response": "put key: " + key + " value failed: " + err.Error()})
 		zap.S().Errorf("put key: %v failed: %v", key, err)

@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/viper"
 )
 
-var Version string = "v0.0.1"
+var Version string = "v1.0.0"
 
 type LogOptions struct {
 	Level    string `yaml:"level"`
@@ -32,6 +32,8 @@ type RedisOptions struct {
 	Password    string `yaml:"password"`
 	DB          int    `yaml:"db"`
 	DialTimeout int    `yaml:"dialtimeout"`
+	Expiration  int    `yaml:"expiration"`
+	Prefix      string `yaml:"prefix"`
 }
 
 type APIServerOptions struct {
